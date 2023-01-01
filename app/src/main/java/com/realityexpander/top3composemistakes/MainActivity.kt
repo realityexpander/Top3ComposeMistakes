@@ -18,6 +18,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -36,6 +37,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Mistake1()
+                    LoginScreen()
+                    RegisterScreen(true)
                 }
             }
         }
@@ -121,7 +124,7 @@ fun LoginScreen(
 @Composable
 fun RegisterScreen(
     isLoggedIn: Boolean,
-    navController: NavController
+    navController: NavController = NavController(LocalContext.current),
 ) {
 
 //    if(isLoggedIn) { // BAD - not recommended bc could be called out of order.
